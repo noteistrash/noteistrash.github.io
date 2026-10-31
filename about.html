@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>311026</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Space+Mono&display=swap');
+    body {
+      font-family: 'Courier Prime', monospace;
+      background-color: #000000;
+    }
+  </style>
+</head>
+<body class="min-h-screen w-screen text-white select-none flex flex-col justify-between p-6 sm:p-10">
+
+  <!-- Navbar -->
+  <header class="flex justify-between items-center font-mono text-sm sm:text-base tracking-tight">
+    <a href="index.html" class="hover:underline text-white font-bold">&larr; home</a>
+    <span class="text-neutral-500 font-mono text-xs sm:text-sm">about.txt</span>
+  </header>
+
+  <!-- Centered Journal Content -->
+  <main class="w-full max-w-2xl mx-auto my-auto py-12 text-center font-mono text-base sm:text-lg space-y-8 leading-relaxed">
+    
+    <div class="text-xs sm:text-sm text-neutral-400 tracking-widest uppercase">
+      about.txt
+    </div>
+
+    <p>
+     this is just a personal page / blog / music update thing</p>
+
+<p> i made this inspired solely by <a href="oklama.com">oklama.com</a>
+
+<p>its tiresome... yet, i enjoy the process!</p>
+
+
+      <span class="text-white font-bold mt-2 inline-block">bye y'all.</span>
+    </div>
+    <div class="pt-6 text-sm text-neutral-400">
+      - noteistrash<br>
+  </main>
+
+  <!-- Status Bar Footer -->
+  <footer class="flex flex-col sm:flex-row justify-between items-center text-xs text-neutral-400 font-mono gap-2 pt-4">
+    <div>i make music</div>
+
+
+    <div id="clock">00:00:00 UTC</div>
+  </footer>
+
+  <script>
+    function updateClock() {
+      const d = new Date();
+      document.getElementById('clock').textContent = 
+        `${String(d.getUTCHours()).padStart(2,'0')}:${String(d.getUTCMinutes()).padStart(2,'0')}:${String(d.getUTCSeconds()).padStart(2,'0')} UTC`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
