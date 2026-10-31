@@ -12,6 +12,11 @@
       background-color: #f8f8ff;
       background-image: radial-gradient(rgba(0, 0, 0, 0.12) 1px, transparent 1px);
       background-size: 28px 28px;
+      transition: background-color 0.2s ease, text-shadow 0.2s ease;
+    }
+    body.dark-theme {
+      background-color: #0b0b0f;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
     }
     .pixel-art {
       shape-rendering: crispEdges;
@@ -19,42 +24,49 @@
     }
   </style>
 </head>
-<body class="h-screen w-screen overflow-hidden text-neutral-800 select-none flex flex-col justify-between p-6 sm:p-10">
+<body class="h-screen w-screen overflow-hidden text-neutral-800 dark:text-neutral-300 select-none flex flex-col justify-between p-6 sm:p-10">
 
   <!-- Navbar -->
   <header class="flex justify-between items-center font-mono text-sm sm:text-base tracking-tight">
-    <a href="music.html" class="hover:underline text-black font-bold">music</a>
-    <a href="social.html" class="hover:underline text-black font-bold">socials &rarr;</a>
-    <a href="about.html" class="hover:underline text-black font-bold">what is this?</a>
+    <div class="flex gap-4 sm:gap-6">
+      <a href="music.html" class="hover:underline text-black dark:text-white font-bold">music</a>
+      <a href="social.html" class="hover:underline text-black dark:text-white font-bold">socials &rarr;</a>
+      <a href="about.html" class="hover:underline text-black dark:text-white font-bold">what is this?</a>
+    </div>
+    
+    <!-- Retro Mono Theme Toggle Switch -->
+    <button id="theme-toggle" class="hover:underline text-black dark:text-white font-bold focus:outline-none flex items-center gap-1">
+      <span id="toggle-icon">[☼]</span> <span id="toggle-text">light.mode</span>
+    </button>
   </header>
 
   <!-- Desktop Grid Links -->
   <main class="grid grid-cols-2 sm:grid-cols-3 gap-8 max-w-2xl mx-auto my-auto text-center font-mono text-base sm:text-lg">
     
     <!-- Stuff Folder -->
-    <a href="stuff.html" class="group flex flex-col items-center p-4 rounded hover:bg-black/5 transition">
+    <a href="stuff.html" class="group flex flex-col items-center p-4 rounded hover:bg-black/5 dark:hover:bg-white/5 transition">
       <svg class="pixel-art w-14 h-12 mb-3" viewBox="0 0 24 20" fill="none">
         <rect x="1" y="2" width="9" height="3" fill="#d8b248"/>
         <rect x="0" y="4" width="24" height="15" fill="#f5e4a8" stroke="#a48123" stroke-width="1.2"/>
         <line x1="3" y1="8" x2="21" y2="8" stroke="#d4b455" stroke-width="1"/>
         <line x1="3" y1="11" x2="15" y2="11" stroke="#d4b455" stroke-width="1"/>
       </svg>
-      <span class="text-neutral-900 group-hover:text-black group-hover:underline">stuff</span>
+      <span class="text-neutral-900 dark:text-neutral-200 group-hover:text-black group-hover:dark:text-white group-hover:underline">stuff</span>
     </a>
 
     <!-- Music / Discography -->
-    <a href="music.html" class="group flex flex-col items-center p-4 rounded hover:bg-black/5 transition">
+    <a href="music.html" class="group flex flex-col items-center p-4 rounded hover:bg-black/5 dark:hover:bg-white/5 transition">
       <svg class="pixel-art w-14 h-12 mb-3" viewBox="0 0 24 20" fill="none">
         <rect x="1" y="2" width="10" height="3" fill="#b0b5be"/>
         <rect x="0" y="4" width="24" height="15" fill="#e2e5eb" stroke="#68707d" stroke-width="1.2"/>
         <circle cx="8" cy="11" r="2" fill="#9fa7b4"/>
         <circle cx="16" cy="11" r="2" fill="#9fa7b4"/>
       </svg>
-      <span class="text-neutral-900 group-hover:text-black group-hover:underline">discography</span>
+      <span class="text-neutral-900 dark:text-neutral-200 group-hover:text-black group-hover:dark:text-white group-hover:underline">discography</span>
     </a>
 
     <!-- About Text Document -->
-    <a href="about.html" class="group flex flex-col items-center p-4 rounded hover:bg-black/5 transition">
+    <a href="about.html" class="group flex flex-col items-center p-4 rounded hover:bg-black/5 dark:hover:bg-white/5 transition">
       <svg class="pixel-art w-12 h-12 mb-3" viewBox="0 0 20 22" fill="none">
         <path d="M1 1H13L19 7V21H1V1Z" fill="#ffffff" stroke="#52525b" stroke-width="1.2"/>
         <path d="M13 1V7H19" stroke="#52525b" stroke-width="1.2" fill="#e4e4e7"/>
@@ -62,21 +74,21 @@
         <line x1="4" y1="12" x2="16" y2="12" stroke="#a1a1aa"/>
         <line x1="4" y1="15" x2="11" y2="15" stroke="#a1a1aa"/>
       </svg>
-      <span class="text-neutral-900 group-hover:text-black group-hover:underline">about.txt</span>
+      <span class="text-neutral-900 dark:text-neutral-200 group-hover:text-black group-hover:dark:text-white group-hover:underline">about.txt</span>
     </a>
 
   </main>
 
   <!-- Status Bar Footer -->
-  <footer class="flex flex-col sm:flex-row justify-between items-center text-xs text-neutral-700 font-mono gap-2 pt-4">
+  <footer class="flex flex-col sm:flex-row justify-between items-center text-xs text-neutral-700 dark:text-neutral-400 font-mono gap-2 pt-4">
     <div>i make music</div>
     
     <div class="space-x-2">
-      <a href="https://noteistrash.bandcamp.com/" target="_blank" class="hover:text-black hover:underline">bandcamp</a>
+      <a href="https://noteistrash.bandcamp.com/" target="_blank" class="hover:text-black hover:dark:text-white hover:underline">bandcamp</a>
       <span>/</span>
-      <a href="https://soundcloud.com/noteistrash" target="_blank" class="hover:text-black hover:underline">soundcloud</a>
+      <a href="https://soundcloud.com/noteistrash" target="_blank" class="hover:text-black hover:dark:text-white hover:underline">soundcloud</a>
       <span>/</span>
-      <a href="https://www.youtube.com/@noteistrash" target="_blank" class="hover:text-black hover:underline">youtube</a>
+      <a href="https://www.youtube.com/@noteistrash" target="_blank" class="hover:text-black hover:dark:text-white hover:underline">youtube</a>
     </div>
 
     <div id="clock">00:00:00 UTC</div>
@@ -90,6 +102,32 @@
     }
     setInterval(updateClock, 1000);
     updateClock();
+
+    // Theme Switcher Logic
+    const themeToggle = document.getElementById('theme-toggle');
+    const toggleIcon = document.getElementById('toggle-icon');
+    const toggleText = document.getElementById('toggle-text');
+
+    // Check system preference or localStorage
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.body.classList.add('dark-theme');
+      toggleIcon.textContent = '[☾]';
+      toggleText.textContent = 'dark.mode';
+    }
+
+    themeToggle.addEventListener('click', () => {
+      if (document.body.classList.contains('dark-theme')) {
+        document.body.classList.remove('dark-theme');
+        toggleIcon.textContent = '[☼]';
+        toggleText.textContent = 'light.mode';
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.body.classList.add('dark-theme');
+        toggleIcon.textContent = '[☾]';
+        toggleText.textContent = 'dark.mode';
+        localStorage.setItem('theme', 'dark');
+      }
+    });
   </script>
 </body>
 </html>
