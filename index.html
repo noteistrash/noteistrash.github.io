@@ -44,4 +44,52 @@
 
     <!-- Music / Discography -->
     <a href="music.html" class="group flex flex-col items-center p-4 rounded hover:bg-black/5 transition">
-      <svg class="pixel-art w-14 h-12 mb-3" viewBox="0 0 24 20"
+      <svg class="pixel-art w-14 h-12 mb-3" viewBox="0 0 24 20" fill="none">
+        <rect x="1" y="2" width="10" height="3" fill="#b0b5be"/>
+        <rect x="0" y="4" width="24" height="15" fill="#e2e5eb" stroke="#68707d" stroke-width="1.2"/>
+        <circle cx="8" cy="11" r="2" fill="#9fa7b4"/>
+        <circle cx="16" cy="11" r="2" fill="#9fa7b4"/>
+      </svg>
+      <span class="text-neutral-900 group-hover:text-black group-hover:underline">discography</span>
+    </a>
+
+    <!-- About Text Document -->
+    <a href="about.html" class="group flex flex-col items-center p-4 rounded hover:bg-black/5 transition">
+      <svg class="pixel-art w-12 h-12 mb-3" viewBox="0 0 20 22" fill="none">
+        <path d="M1 1H13L19 7V21H1V1Z" fill="#ffffff" stroke="#52525b" stroke-width="1.2"/>
+        <path d="M13 1V7H19" stroke="#52525b" stroke-width="1.2" fill="#e4e4e7"/>
+        <line x1="4" y1="9" x2="16" y2="9" stroke="#71717a"/>
+        <line x1="4" y1="12" x2="16" y2="12" stroke="#a1a1aa"/>
+        <line x1="4" y1="15" x2="11" y2="15" stroke="#a1a1aa"/>
+      </svg>
+      <span class="text-neutral-900 group-hover:text-black group-hover:underline">about.txt</span>
+    </a>
+
+  </main>
+
+  <!-- Status Bar Footer -->
+  <footer class="flex flex-col sm:flex-row justify-between items-center text-xs text-neutral-700 font-mono gap-2 pt-4">
+    <div>i make music</div>
+    
+    <div class="space-x-2">
+      <a href="https://noteistrash.bandcamp.com/" target="_blank" class="hover:text-black hover:underline">bandcamp</a>
+      <span>/</span>
+      <a href="https://soundcloud.com/noteistrash" target="_blank" class="hover:text-black hover:underline">soundcloud</a>
+      <span>/</span>
+      <a href="https://www.youtube.com/@noteistrash" target="_blank" class="hover:text-black hover:underline">youtube</a>
+    </div>
+
+    <div id="clock">00:00:00 UTC</div>
+  </footer>
+
+  <script>
+    function updateClock() {
+      const d = new Date();
+      document.getElementById('clock').textContent = 
+        `${String(d.getUTCHours()).padStart(2,'0')}:${String(d.getUTCMinutes()).padStart(2,'0')}:${String(d.getUTCSeconds()).padStart(2,'0')} UTC`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
