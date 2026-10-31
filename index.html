@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>noteistrash</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://tailwindcss.com"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Space+Mono&display=swap');
+    @import url('https://googleapis.com');
     body {
       font-family: 'Courier Prime', monospace;
       background-color: #f8f8ff;
       background-image: radial-gradient(rgba(0, 0, 0, 0.12) 1px, transparent 1px);
       background-size: 28px 28px;
-      transition: background-color 0.2s ease, text-shadow 0.2s ease;
+      transition: background-color 0.2s ease;
     }
     body.dark-theme {
       background-color: #0b0b0f;
@@ -24,19 +24,19 @@
     }
   </style>
 </head>
-<body class="h-screen w-screen overflow-hidden text-neutral-800 dark:text-neutral-300 select-none flex flex-col justify-between p-6 sm:p-10">
+<body class="h-screen w-screen overflow-hidden text-neutral-800 dark:text-neutral-200 select-none flex flex-col justify-between p-6 sm:p-10">
 
   <!-- Navbar -->
-  <header class="flex justify-between items-center font-mono text-sm sm:text-base tracking-tight">
-    <div class="flex gap-4 sm:gap-6">
+  <header class="flex justify-between items-center font-mono text-sm sm:text-base tracking-tight w-full">
+    <nav class="flex gap-4 sm:gap-6">
       <a href="music.html" class="hover:underline text-black dark:text-white font-bold">music</a>
       <a href="social.html" class="hover:underline text-black dark:text-white font-bold">socials &rarr;</a>
       <a href="about.html" class="hover:underline text-black dark:text-white font-bold">what is this?</a>
-    </div>
+    </nav>
     
-    <!-- Retro Mono Theme Toggle Switch -->
-    <button id="theme-toggle" class="hover:underline text-black dark:text-white font-bold focus:outline-none flex items-center gap-1">
-      <span id="toggle-icon">[☼]</span> <span id="toggle-text">light.mode</span>
+    <!-- Restored to match the clean string link layout -->
+    <button id="theme-toggle" class="hover:underline text-black dark:text-white font-bold font-mono focus:outline-none bg-transparent border-none p-0 cursor-pointer">
+      toggle mode <span id="toggle-icon">[☼]</span>
     </button>
   </header>
 
@@ -84,11 +84,11 @@
     <div>i make music</div>
     
     <div class="space-x-2">
-      <a href="https://noteistrash.bandcamp.com/" target="_blank" class="hover:text-black hover:dark:text-white hover:underline">bandcamp</a>
+      <a href="https://bandcamp.com" target="_blank" class="hover:text-black hover:dark:text-white hover:underline">bandcamp</a>
       <span>/</span>
-      <a href="https://soundcloud.com/noteistrash" target="_blank" class="hover:text-black hover:dark:text-white hover:underline">soundcloud</a>
+      <a href="https://soundcloud.com" target="_blank" class="hover:text-black hover:dark:text-white hover:underline">soundcloud</a>
       <span>/</span>
-      <a href="https://www.youtube.com/@noteistrash" target="_blank" class="hover:text-black hover:dark:text-white hover:underline">youtube</a>
+      <a href="https://youtube.com" target="_blank" class="hover:text-black hover:dark:text-white hover:underline">youtube</a>
     </div>
 
     <div id="clock">00:00:00 UTC</div>
@@ -106,25 +106,21 @@
     // Theme Switcher Logic
     const themeToggle = document.getElementById('theme-toggle');
     const toggleIcon = document.getElementById('toggle-icon');
-    const toggleText = document.getElementById('toggle-text');
 
     // Check system preference or localStorage
     if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.body.classList.add('dark-theme');
       toggleIcon.textContent = '[☾]';
-      toggleText.textContent = 'dark.mode';
     }
 
     themeToggle.addEventListener('click', () => {
       if (document.body.classList.contains('dark-theme')) {
         document.body.classList.remove('dark-theme');
         toggleIcon.textContent = '[☼]';
-        toggleText.textContent = 'light.mode';
         localStorage.setItem('theme', 'light');
       } else {
         document.body.classList.add('dark-theme');
         toggleIcon.textContent = '[☾]';
-        toggleText.textContent = 'dark.mode';
         localStorage.setItem('theme', 'dark');
       }
     });
