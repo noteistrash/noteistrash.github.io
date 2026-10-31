@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>noteistrash</title>
   <script src="https://tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'selector'
+    }
+  </script>
   <style>
     @import url('https://googleapis.com');
     body {
@@ -14,7 +19,7 @@
       background-size: 28px 28px;
       transition: background-color 0.2s ease;
     }
-    body.dark-theme {
+    html.dark body {
       background-color: #0b0b0f;
       background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
     }
@@ -34,7 +39,6 @@
       <a href="about.html" class="hover:underline text-black dark:text-white font-bold">what is this?</a>
     </nav>
     
-    <!-- Restored to match the clean string link layout -->
     <button id="theme-toggle" class="hover:underline text-black dark:text-white font-bold font-mono focus:outline-none bg-transparent border-none p-0 cursor-pointer">
       toggle mode <span id="toggle-icon">[☼]</span>
     </button>
@@ -45,7 +49,7 @@
     
     <!-- Stuff Folder -->
     <a href="stuff.html" class="group flex flex-col items-center p-4 rounded hover:bg-black/5 dark:hover:bg-white/5 transition">
-      <svg class="pixel-art w-14 h-12 mb-3" viewBox="0 0 24 20" fill="none">
+      <svg class="pixel-art w-14 h-12 mb-3 dark:invert" viewBox="0 0 24 20" fill="none">
         <rect x="1" y="2" width="9" height="3" fill="#d8b248"/>
         <rect x="0" y="4" width="24" height="15" fill="#f5e4a8" stroke="#a48123" stroke-width="1.2"/>
         <line x1="3" y1="8" x2="21" y2="8" stroke="#d4b455" stroke-width="1"/>
@@ -56,7 +60,7 @@
 
     <!-- Music / Discography -->
     <a href="music.html" class="group flex flex-col items-center p-4 rounded hover:bg-black/5 dark:hover:bg-white/5 transition">
-      <svg class="pixel-art w-14 h-12 mb-3" viewBox="0 0 24 20" fill="none">
+      <svg class="pixel-art w-14 h-12 mb-3 dark:invert" viewBox="0 0 24 20" fill="none">
         <rect x="1" y="2" width="10" height="3" fill="#b0b5be"/>
         <rect x="0" y="4" width="24" height="15" fill="#e2e5eb" stroke="#68707d" stroke-width="1.2"/>
         <circle cx="8" cy="11" r="2" fill="#9fa7b4"/>
@@ -67,7 +71,7 @@
 
     <!-- About Text Document -->
     <a href="about.html" class="group flex flex-col items-center p-4 rounded hover:bg-black/5 dark:hover:bg-white/5 transition">
-      <svg class="pixel-art w-12 h-12 mb-3" viewBox="0 0 20 22" fill="none">
+      <svg class="pixel-art w-12 h-12 mb-3 invert dark:invert-0" viewBox="0 0 20 22" fill="none">
         <path d="M1 1H13L19 7V21H1V1Z" fill="#ffffff" stroke="#52525b" stroke-width="1.2"/>
         <path d="M13 1V7H19" stroke="#52525b" stroke-width="1.2" fill="#e4e4e7"/>
         <line x1="4" y1="9" x2="16" y2="9" stroke="#71717a"/>
@@ -107,19 +111,18 @@
     const themeToggle = document.getElementById('theme-toggle');
     const toggleIcon = document.getElementById('toggle-icon');
 
-    // Check system preference or localStorage
     if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.body.classList.add('dark-theme');
+      document.documentElement.classList.add('dark');
       toggleIcon.textContent = '[☾]';
     }
 
     themeToggle.addEventListener('click', () => {
-      if (document.body.classList.contains('dark-theme')) {
-        document.body.classList.remove('dark-theme');
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
         toggleIcon.textContent = '[☼]';
         localStorage.setItem('theme', 'light');
       } else {
-        document.body.classList.add('dark-theme');
+        document.documentElement.classList.add('dark');
         toggleIcon.textContent = '[☾]';
         localStorage.setItem('theme', 'dark');
       }
