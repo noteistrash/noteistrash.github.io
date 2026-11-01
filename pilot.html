@@ -3,51 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>pilot on streaming</title>
+  <title>stuff</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Space+Mono&display=swap');
     body {
       font-family: 'Courier Prime', monospace;
-      background-color: #000000;
+      background-color: #f6e3b4;
+      border: 18px solid #ff7a59;
+    }
+    .pixel-art {
+      shape-rendering: crispEdges;
+      image-rendering: pixelated;
     }
   </style>
 </head>
-<body class="min-h-screen w-screen text-white select-none flex flex-col justify-between p-6 sm:p-10">
+<body class="h-screen w-screen overflow-hidden text-neutral-800 select-none flex flex-col justify-between p-6 sm:p-10">
 
-  <!-- Navbar -->
-  <header class="flex justify-between items-center font-mono text-sm sm:text-base tracking-tight">
-    <a href="index.html" class="hover:underline text-white font-bold">&larr; home</a>
-    <span class="text-neutral-500 font-mono text-xs sm:text-sm">pilot.txt</span>
-  </header>
+  <!-- Spacer to keep center balanced -->
+  <div class="hidden sm:block opacity-0 pointer-events-none"></div>
 
-  <!-- Centered Journal Content -->
-  <main class="w-full max-w-2xl mx-auto my-auto py-12 text-center font-mono text-base sm:text-lg space-y-8 leading-relaxed">
+  <!-- Center Card Container -->
+  <main class="w-full max-w-2xl mx-auto my-auto flex flex-col items-center">
     
-    <div class="text-xs sm:text-sm text-neutral-400 tracking-widest uppercase">
-     pilot
+    <!-- Directory Window / Address Bar -->
+    <div class="w-full bg-white border-2 border-black px-4 py-2.5 flex items-center gap-3 shadow-[3px_3px_0px_rgba(0,0,0,1)]">
+      <!-- Folder Icon -->
+      <svg class="pixel-art w-7 h-6 flex-shrink-0" viewBox="0 0 24 20" fill="none">
+        <rect x="1" y="2" width="9" height="3" fill="#d8b248"/>
+        <rect x="0" y="4" width="24" height="15" fill="#f5e4a8" stroke="#000000" stroke-width="1.5"/>
+        <line x1="3" y1="8" x2="21" y2="8" stroke="#d4b455" stroke-width="1"/>
+      </svg>
+      <span class="font-mono text-sm sm:text-base tracking-tight text-black font-bold">noteistrash.github.io/stuff/</span>
     </div>
 
-    <div>
-      <ol class="list-decimal list-inside text-left inline-block space-y-2">
-        <li><u><a href="https://youtu.be/e_4aHYC1QAg?si=s7r7dvxgcKkVw0Hz" class="hover:text-neutral-300">youtube</a></u></li>
-        <li><u><a href="https://soundcloud.com/noteistrash" class="hover:text-neutral-300">soundcloud</a></u></li>
-        <li><u><a href="https://noteistrash.bandcamp.com/track/pilot" class="hover:text-neutral-300">bandcamp</a></u></li>
-      </ol>
-    </div>
+    <!-- Centered List Links -->
+    <div class="w-full pt-8 pl-4 sm:pl-8 space-y-6 font-mono text-base sm:text-lg">
+      <!-- Parent Directory -->
+      <div>
+        <a href="index.html" class="hover:underline text-black font-bold">../</a>
+      </div>
 
-    <div>
-      <span class="text-white font-bold mt-2 inline-block">first full song that i <i>ever</i> made btw.</span>
-    </div>
-
-    <div class="pt-6 text-sm text-neutral-400">
-      click or tap on the website name(s) to go to the song on that specific website
+      <!-- Music File with Custom PNG -->
+      <div class="pl-8 sm:pl-12">
+        <a href="pilot.html" target="_blank" class="inline-flex items-center gap-4 hover:underline group">
+          <!-- Custom PNG Icon Container (exact match to previous icon dimensions) -->
+          <img 
+            src="n..png" 
+            alt="icon" 
+            class="pixel-art w-8 h-7 flex-shrink-0 object-contain"
+          />
+          <span class="text-neutral-900 group-hover:text-black">31 OCTOBER 26.txt</span>
+        </a>
+      </div>
     </div>
   </main>
 
   <!-- Status Bar Footer -->
-  <footer class="flex flex-col sm:flex-row justify-between items-center text-xs text-neutral-400 font-mono gap-2 pt-4">
+  <footer class="flex flex-col sm:flex-row justify-between items-center text-xs text-neutral-700 font-mono gap-2 pt-4">
     <div>i make music</div>
+
     <div id="clock">00:00:00 UTC</div>
   </footer>
 
